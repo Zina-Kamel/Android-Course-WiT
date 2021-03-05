@@ -2,8 +2,12 @@ package com.example.lessons;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,5 +49,30 @@ public class MainActivity extends AppCompatActivity {
         quantity = quantity - 1;
         displayQuantity(quantity);
     }
-    
+
+    /**
+     * This method is called when the submit button is clicked.
+     */
+    public void submitOrder(View view) {
+        // Get user's name
+        EditText nameField = (EditText) findViewById(R.id.name_field);
+        Editable nameEditable = nameField.getText();
+        String name = nameEditable.toString();
+        //print the summary
+        TextView summarySpace = (TextView) findViewById(R.id.summary_space);
+        String summary = "Thank you " + name + "!" + "\n" + "Your order has been confirmed for " + quantity;
+        summarySpace.setText(summary);
+
+        // Use an intent to launch an email app.
+        // Send the order summary in the email body.
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Your invitation card is ready");
+        intent.putExtra(Intent.EXTRA_TEXT, summary);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
 }
