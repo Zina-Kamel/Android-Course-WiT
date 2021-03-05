@@ -3,6 +3,7 @@ package com.example.lessons;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,4 +24,26 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + numberOfPeople);
     }
 
+    /**
+     * This method is called when the plus button is clicked.
+     */
+    public void increment(View view) {
+        if (quantity == 10) {
+            return;
+        }
+        quantity = quantity + 1;
+        displayQuantity(quantity);
+    }
+
+    /**
+     * This method is called when the minus button is clicked.
+     */
+    public void decrement(View view) {
+        if (quantity == 0) {
+            return;
+        }
+        quantity = quantity - 1;
+        displayQuantity(quantity);
+    }
+    
 }
