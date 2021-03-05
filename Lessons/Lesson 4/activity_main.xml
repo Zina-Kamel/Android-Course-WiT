@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:layout_marginLeft="8dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -13,6 +15,21 @@
         android:gravity="center"
         android:fontFamily="serif-monospace"
         android:textSize="34dp" />
+    
+    <EditText
+        android:id="@+id/name_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter you name:"
+        android:inputType="text"
+        android:layout_marginTop="26dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="How many people are you?"
+        android:textSize="20dp"
+        android:layout_marginTop="46dp"/>
 
 
 </LinearLayout>
